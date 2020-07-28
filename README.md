@@ -1,27 +1,42 @@
-# LeafFront
+[![|](https://i.ibb.co/8XF6SKd/angular.png)](https://github.com/OpenLeafProject/AngularLeaf)&emsp;[![|](https://i.ibb.co/Ws5JfT7/NetCore.png)](https://github.com/OpenLeafProject/CoreLeaf)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.0.
+# Leaf (REST API) 
 
-## Development server
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreensvg?style=flat)](https://github.com/Ukkime/Leaf) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/Ukkime/Leaf/issues)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+### What is Leaf?
+Leaf is a complete solution for clinical data management with this awesome features
+  - Patients management
+  - Scheduled dates management
+  - Invoices management
+  - Patients history management
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+### Tech
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Leaf uses a number of open source projects to work properly:
 
-## Running unit tests
+* [Angular] - HTML enhanced for web apps!
+* [.NET Core] - powerfull APIREST build with .NET Core 3.1
+* [Twitter Bootstrap] - great UI boilerplate for modern web apps
+* [Material Design] - beautifull components for a beautifull web app
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Leaf REST API Installation
 
-## Running end-to-end tests
+[TO DO: WRITE COMMANDS TO RESTORE PACKAGES - INSTALL LEAF]
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```sh
+$ cd leaf
+$ dotnet restore
+```
 
-## Further help
+### Docker
+Leaf is very easy to install and deploy in a Docker container.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+By default, the Docker will expose port 8080, so change this within the Dockerfile if necessary. When ready, simply use the Dockerfile to build the image.
+
+```sh
+cd leaf
+docker build -t [TO DO]
+```
