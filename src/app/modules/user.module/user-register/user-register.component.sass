@@ -1,0 +1,85 @@
+/* You can add global styles to this file, and also import other style files */
+$units: 1px !default
+
+@mixin screen($res-first, $res-last: $res-first)
+  @if $res-first == $res-last
+    @media screen and ( max-width: if(unitless($res-first), $res-first*$units, $res-first) )
+      @content
+    
+  @else if $res-first < $res-last
+    @media screen and ( min-width: if(unitless($res-first), $res-first*$units, $res-first) ) and ( max-width: if(unitless($res-last), $res-last*$units, $res-last) )
+      @content
+    
+@mixin min-screen($res)
+  @media screen and ( min-width: if(unitless($res), $res*$units, $res) )
+    @content
+    
+.box
+  @include min-screen(1) 
+    position: relative
+    top: 10rem
+    opacity: 1
+    transform: scale(1)
+    -webkit-transform: scale(1)
+    -ms-transform: scale(1)
+
+  @include min-screen(1024) 
+    position: relative
+    top: 10rem
+    margin: 0 auto
+    opacity: 1
+    float: center
+    padding: 60px 50px 40px 50px
+    width: 100%
+    background: #fff
+    border-radius: 10px
+    transform: scale(1)
+    -webkit-transform: scale(1)
+    -ms-transform: scale(1)
+    z-index: 5
+    max-width: 330px
+
+
+
+.login-wrapper
+  .example-form
+    min-width: 100%
+    max-width: 300px
+    width: 100%
+
+  .example-full-width, .btn-block
+    width: 100%
+
+  mat-card-header
+    text-align: center
+    width: 100%
+    display: block
+    font-weight: 700
+
+    mat-card-title
+      font-size: 30px
+      margin: 0
+
+  .mat-card
+    padding: 40px 70px 50px
+
+  .mat-stroked-button
+    border: 1px solid currentColor
+    line-height: 54px
+    background: #009688
+    color: white !important
+
+  .mat-form-field-appearance-legacy .mat-form-field-infix
+    padding: 0.8375em 0
+
+  .my-mat-hint
+    line-height: 1.2em
+    transform: translateY(30px)
+    font-size: 75%
+    text-align: right
+
+  .text-danger
+    color: red
+ 
+  .text-center
+    text-align: center

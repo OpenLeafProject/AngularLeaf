@@ -1,1 +1,46 @@
-/* You can add global styles to this file, and also import other style files */
+$units: 1px !default
+
+@mixin screen($res-first, $res-last: $res-first)
+  @if $res-first == $res-last
+    @media screen and ( max-width: if(unitless($res-first), $res-first*$units, $res-first) )
+      @content
+    
+  @else if $res-first < $res-last
+    @media screen and ( min-width: if(unitless($res-first), $res-first*$units, $res-first) ) and ( max-width: if(unitless($res-last), $res-last*$units, $res-last) )
+      @content
+    
+@mixin min-screen($res)
+  @media screen and ( min-width: if(unitless($res), $res*$units, $res) )
+    @content
+  
+html
+  height: 100%
+  margin: 0
+  padding: 0
+
+body
+  width: 100%
+  margin: 0
+  padding: 0
+  background-image: url(./assets/images/background.png) !important
+  background-size: 100% auto
+  background-position: center top
+  background-attachment: fixed
+  min-height: 100vh
+  font-family: 'Roboto', sans-serif
+
+
+  @include min-screen(1) 
+      background-size: auto 100%
+      background-position: center top
+      background-attachment: fixed
+
+  @include min-screen(1024) 
+      background-size: 100% auto
+      background-position: center top
+      background-attachment: fixed
+
+
+
+mat-grid-tile 
+  background: lightblue

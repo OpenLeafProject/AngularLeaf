@@ -1,0 +1,48 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+
+    <mat-card class="box">
+        <mat-card-header>
+            <mat-card-title>Registro</mat-card-title>
+        </mat-card-header>
+
+        <br />
+
+        <div class="text-danger example-full-width text-center">
+            {{displayMessage}}<span>&nbsp;</span>
+        </div>
+
+        <br />
+
+        <form class="example-form" [formGroup]="loginForm" (submit)="createUser()">
+            <mat-card-content>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Usuario" formControlName="username">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput [type]="hidePassword ? 'password' : 'text'" placeholder="Password"
+                        formControlName="password">
+                    <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword"
+                        [attr.aria-label]="'HidePassword password'" [attr.aria-pressed]="hidePassword">
+                        <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput [type]="hidePassword ? 'password' : 'text'" placeholder="Repetir password"
+                        formControlName="repassword">
+                    <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword"
+                        [attr.aria-label]="'HidePassword password'" [attr.aria-pressed]="hidePassword">
+                        <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </mat-card-content>
+
+            <button mat-stroked-button class="btn-block" (click)="createUser()">Registrar
+                usuario
+            </button>
+
+        </form>
+    </mat-card>
+
+</div>
