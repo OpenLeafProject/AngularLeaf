@@ -1,15 +1,157 @@
-<mat-grid-list cols="1" rowHeight="100%">
-    <mat-grid-tile style="background: #fff;" >
-        <mat-form-field>
-            <mat-label>Message</mat-label>
-            <input matInput value="Disco party!" #message>
-          </mat-form-field>
-          
-          <mat-form-field>
-            <mat-label>Action</mat-label>
-            <input matInput value="Dance" #action>
-          </mat-form-field>
-          
-          <button mat-stroked-button (click)="openSnackBar(message.value, action.value)">Show snack-bar</button>
-    </mat-grid-tile>
-</mat-grid-list>
+
+<div fxFlex fxLayout="column" fxLayoutGap="10px" class="flex-content">
+  <div fxLayout="row wrap">
+    <!-- loop over the cardList and show the cards -->
+    <div
+      fxFlex="25"
+      fxFlex.md="50"
+      fxFlex.sm="100"
+      fxFlex.xs="100"
+      fxLayout="column"
+      style="padding: 5px;"
+    >
+      <!-- cards here -->
+      <mat-card>
+        <mat-card-title-group>
+          <mat-card-title class="text-xl push-none">Card with Small Image </mat-card-title>
+          <mat-card-subtitle class="push-none">80px x 80px Image</mat-card-subtitle>
+          <img mat-card-sm-image src="https://placekitten.com/g/200/200">
+        </mat-card-title-group>
+      </mat-card>
+    </div>
+    <!-- loop over the cardList and show the cards -->
+    <div
+      fxFlex="25"
+      fxFlex.md="50"
+      fxFlex.sm="100"
+      fxFlex.xs="100"
+      fxLayout="column"
+      style="padding: 5px;"
+    >
+      <!-- cards here -->
+      <mat-card>
+        <mat-card-title-group>
+          <mat-card-title class="text-xl push-none">Card with Small Image</mat-card-title>
+          <mat-card-subtitle class="push-none">80px x 80px Image</mat-card-subtitle>
+          <img mat-card-sm-image src="https://placekitten.com/g/200/200">
+        </mat-card-title-group>
+      </mat-card>
+    </div>
+    <!-- loop over the cardList and show the cards -->
+    <div
+      fxFlex="25"
+      fxFlex.md="50"
+      fxFlex.sm="100"
+      fxFlex.xs="100"
+      fxLayout="column"
+      style="padding: 5px;"
+    >
+      <!-- cards here -->
+      <mat-card>
+        <mat-card-title-group>
+          <mat-card-title class="text-xl push-none">Card with Small Image</mat-card-title>
+          <mat-card-subtitle class="push-none">80px x 80px Image</mat-card-subtitle>
+          <img mat-card-sm-image src="https://placekitten.com/g/200/200">
+        </mat-card-title-group>
+      </mat-card>
+    </div>
+    <!-- loop over the cardList and show the cards -->
+    <div
+    fxFlex="25"
+    fxFlex.md="50"
+    fxFlex.sm="100"
+    fxFlex.xs="100"
+    fxLayout="column"
+    style="padding: 5px;"
+  >
+    <!-- cards here -->
+    <mat-card>
+      <mat-card-title-group>
+        <mat-card-title class="text-xl push-none">Card with Small Image</mat-card-title>
+        <mat-card-subtitle class="push-none">80px x 80px Image</mat-card-subtitle>
+        <img mat-card-sm-image src="https://placekitten.com/g/200/200">
+      </mat-card-title-group>
+    </mat-card>
+  </div>
+
+    <!-- loop over the cardList and show the cards -->
+    <div
+    fxFlex="25"
+    fxFlex.md="50"
+    fxFlex.sm="100"
+    fxFlex.xs="100"
+    fxLayout="column"
+    style="padding: 5px;"
+  >
+    <!-- cards here -->
+    <mat-card>
+      <mat-card-title-group>
+        <mat-card-title class="text-xl push-none">Card with Small Image</mat-card-title>
+        <mat-card-subtitle class="push-none">80px x 80px Image</mat-card-subtitle>
+        <img mat-card-sm-image src="https://placekitten.com/g/200/200">
+      </mat-card-title-group>
+    </mat-card>
+  </div>
+
+    <!-- loop over the cardList and show the cards -->
+    <div
+    fxFlex="25"
+    fxFlex.md="50"
+    fxFlex.sm="100"
+    fxFlex.xs="100"
+    fxLayout="column"
+    style="padding: 5px;"
+  >
+    <!-- cards here -->
+    <mat-card>
+      <mat-card-title-group>
+        <mat-card-title class="text-xl push-none">Card with Small Image</mat-card-title>
+        <mat-card-subtitle class="push-none">80px x 80px Image</mat-card-subtitle>
+        <img mat-card-sm-image src="https://placekitten.com/g/200/200">
+      </mat-card-title-group>
+    </mat-card>
+  </div>
+
+    <!-- loop over the cardList and show the cards -->
+    <div
+    fxFlex="25"
+    fxFlex.md="50"
+    fxFlex.sm="100"
+    fxFlex.xs="100"
+    fxLayout="column"
+    style="padding: 5px;"
+  >
+    <!-- cards here -->
+    <mat-card>
+      <mat-card-title-group>
+        <mat-card-title class="text-xl push-none">Card with Small Image</mat-card-title>
+        <mat-card-subtitle class="push-none">80px x 80px Image</mat-card-subtitle>
+        <img mat-card-sm-image src="https://placekitten.com/g/200/200">
+      </mat-card-title-group>
+    </mat-card>
+  </div>
+
+    <!-- loop over the cardList and show the cards -->
+    <div
+    fxFlex="25"
+    fxFlex.md="50"
+    fxFlex.sm="100"
+    fxFlex.xs="100"
+    fxLayout="column"
+    style="padding: 5px;"
+  >
+    <!-- cards here -->
+    <mat-card (click)="refresh()" class="hand">
+      <mat-card-title-group>
+        <mat-card-title class="text-xl push-none">Card with Small Image</mat-card-title>
+        <mat-card-subtitle class="push-none">80px x 80px Image</mat-card-subtitle>
+        <img mat-card-sm-image src="https://placekitten.com/g/200/200">
+      </mat-card-title-group>
+    </mat-card>
+  </div>
+
+
+
+</div>
+
+</div>
