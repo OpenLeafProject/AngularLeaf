@@ -64,7 +64,7 @@ export class UserLoginComponent implements OnInit {
           this.loginService.getLoginProfile(token).subscribe(
             r => {
               this.authUser.setProfile(r.profile);
-              this.router.navigate(['/console/dashboard']);
+              this.router.navigate(['/c/dashboard']);
             }, error =>  {
               this.loginError = error.error;
               console.log(error);
