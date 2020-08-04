@@ -64,10 +64,21 @@
                                 </div>
                                 <div fxFlex="10" fxFlex.md="10" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column"
                                     style="padding: 5px;">
-                                    <mat-form-field appearance="fill" class="example-full-width">
-                                        <mat-label>Sex</mat-label>
-                                        <input matInput formControlName="sex">
-                                    </mat-form-field>
+
+                                    <mat-button-toggle-group name="sex" aria-label="Sex" formControlName="sex">
+                                        <mat-button-toggle value="1" class="sex-icon">
+                                            <mat-icon mat-list-icon fontSet="fa" fontIcon="fa-venus"></mat-icon>
+                                            <span fxHide fxShow.sm fxShow.xs>&nbsp;Venus</span>
+                                        </mat-button-toggle>
+                                        <mat-button-toggle value="2" class="sex-icon">
+                                            <mat-icon mat-list-icon fontSet="fa" fontIcon="fa-mars"></mat-icon>
+                                            <span fxHide fxShow.sm fxShow.xs>&nbsp;Mars</span>
+                                        </mat-button-toggle>
+                                        <mat-button-toggle value="3" class="sex-icon">
+                                            <mat-icon mat-list-icon fontSet="fa" fontIcon="fa-transgender-alt"></mat-icon>
+                                            <span fxHide fxShow.sm fxShow.xs>&nbsp;Trans</span>
+                                        </mat-button-toggle>
+                                      </mat-button-toggle-group>
 
                                 </div>
                                 <div fxFlex="15" fxFlex.md="15" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column"

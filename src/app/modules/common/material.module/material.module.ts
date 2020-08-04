@@ -18,7 +18,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDatepickerModule }from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatExpansionModule } from '@angular/material/expansion';
-
+import { MatRadioModule } from '@angular/material/radio';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
    imports: [
@@ -57,7 +58,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
       MatProgressSpinnerModule,
       MatDatepickerModule,
       MatNativeDateModule,
-      MatExpansionModule
+      MatExpansionModule,
+      MatRadioModule,
+      MatButtonToggleModule
    ],
    exports: [
     MatButtonModule,
@@ -77,7 +80,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatTableModule,
     MatProgressSpinnerModule,
     MatDatepickerModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatRadioModule,
+    MatButtonToggleModule
    ],
    providers: [
      MatDatepickerModule,
