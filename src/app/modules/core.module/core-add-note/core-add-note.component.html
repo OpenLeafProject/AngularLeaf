@@ -1,0 +1,12 @@
+<ng-container *ngIf="showNewNote">
+    <mat-divider></mat-divider>
+    <h3 style="padding-top: 10px;"><b>Add note</b></h3>
+    
+    <p>
+        <p-editor [(ngModel)]="newNote" [style]="{'height':'320px'}"></p-editor>
+    </p>
+    <p>
+        <button mat-flat-button color="warning" style="float:right!important" (click)="cancel()">Cancel</button>
+        <button mat-flat-button color="primary" style="float:right!important" (click)="save()">Save note</button>
+    </p>
+</ng-container>
