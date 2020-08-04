@@ -63,8 +63,8 @@
     
             <!-- Color Column -->
             <ng-container matColumnDef="age" class="smhide">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Age </mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{row.borndate}} </mat-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Born </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.borndate | date:'dd/MM/yyyy'}} ({{row.borndate | age}}) </mat-cell>
             </ng-container>
 
             <!-- Color Column -->
