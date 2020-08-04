@@ -1,27 +1,44 @@
-# LeafFront
+[![|](https://i.ibb.co/8XF6SKd/angular.png)](https://github.com/OpenLeafProject/AngularLeaf)&emsp;[![|](https://i.ibb.co/Ws5JfT7/NetCore.png)](https://github.com/OpenLeafProject/CoreLeaf)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.0.
+# Leaf (Angular PWA) 
 
-## Development server
+[![Build Status](https://img.shields.io/badge/build-not%20builded%20yet-orange)](https://github.com/OpenLeafProject/AngularLeaf) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/OpenLeafProject/AngularLeaf/issues)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### What is Leaf?
+Leaf is a complete solution for clinical data management with this awesome features
+  - Patients management
+  - Scheduled dates management
+  - Invoices management
+  - Patients history management
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### Tech
 
-## Running unit tests
+Leaf uses a number of open source projects to work properly:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* [Angular] - HTML enhanced for web apps!
+* [Twitter Bootstrap] - great UI boilerplate for modern web apps
+* [Material Design] - beautifull components for a beautifull web app
 
-## Running end-to-end tests
+### Clone and work with Leaf REST API
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+> We highly recommend [Visual Studio Code](https://code.visualstudio.com/download) to develop! 
+> But You can work with your favourite IDE :wink:
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```sh
+$ git clone https://github.com/OpenLeafProject/AngularLeaf.git
+$ cd AngularLeaf
+$ npm install
+$ code .
+```
+
+
+### Docker
+Leaf will be very easy to install and deploy in a Docker container but we need help to develop Leaf!
+
+Dou you want colaborate with Leaf?? -> Read the [CONTRIBUTING.md](https://github.com/OpenLeafProject/CoreLeaf/blob/master/CONTRIBUTING.md) file.
+
+
