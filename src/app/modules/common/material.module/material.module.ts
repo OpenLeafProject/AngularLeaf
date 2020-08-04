@@ -9,8 +9,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
-
-
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDatepickerModule }from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 @NgModule({
@@ -22,9 +29,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
         MatBadgeModule,
         MatSidenavModule,
         MatListModule,
-        ,
         MatInputModule,
-        ,
         MatRadioModule,
         MatDatepickerModule,
         MatNativeDateModule,
@@ -43,7 +48,16 @@ import { MatGridListModule } from '@angular/material/grid-list';
       MatToolbarModule,
       MatDividerModule,
       MatIconModule,
-      MatGridListModule
+      MatGridListModule,
+      FlexLayoutModule,
+      MatSidenavModule,
+      MatListModule,
+      MatPaginatorModule,
+      MatTableModule,
+      MatProgressSpinnerModule,
+      MatDatepickerModule,
+      MatNativeDateModule,
+      MatExpansionModule
    ],
    exports: [
     MatButtonModule,
@@ -55,10 +69,19 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatToolbarModule,
     MatDividerModule,
     MatIconModule,
-    MatGridListModule
+    MatGridListModule,
+    FlexLayoutModule,
+    MatSidenavModule,
+    MatListModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
+    MatDatepickerModule,
+    MatExpansionModule
    ],
    providers: [
-     // MatDatepickerModule,
+     MatDatepickerModule,
+    
    ]
 })
 
