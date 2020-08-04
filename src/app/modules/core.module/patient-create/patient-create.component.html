@@ -1,0 +1,185 @@
+<div fxFlex fxLayout="column" fxLayoutGap="10px" class="flex-content">
+    <div fxLayout="row wrap">
+        <!-- loop over the cardList and show the cards -->
+        <div fxFlex="100" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column" style="padding: 5px;">
+            <!-- cards here -->
+            <mat-card>
+                <mat-card-title>
+                    <h1>Create patient</h1>
+                </mat-card-title>
+                <mat-card-content style="padding: 25px;">
+                    <form class="example-form" [formGroup]="createForm" (submit)="create()">
+
+                        <div fxFlex fxLayout="column" fxLayoutGap="10px" class="flex-content">
+                            <div fxLayout="row wrap">
+                                
+                                <div fxFlex="100" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column"
+                                    style="padding: 5px;">
+                                    <h3>Patient Info</h3>
+
+                                </div>
+
+                                <div fxFlex="25" fxFlex.md="25" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column"
+                                    style="padding: 5px;">
+                                    <mat-form-field appearance="fill" class="example-full-width">
+                                        <mat-label>Name</mat-label>
+                                        <input matInput formControlName="name">
+                                        <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
+                                        <mat-error *ngIf="hasError('name', 'maxlength')">Length is exeded</mat-error>
+                                        <mat-error *ngIf="hasError('name', 'pattern')">Characters nor allowed</mat-error>
+                                    </mat-form-field>
+
+                                </div>
+                                <div fxFlex="20" fxFlex.md="20" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column"
+                                    style="padding: 5px;">
+                                    <mat-form-field appearance="fill" class="example-full-width">
+                                        <mat-label>Surname</mat-label>
+                                        <input matInput formControlName="surname">
+                                        <mat-error *ngIf="hasError('surname', 'required')">Surname is required</mat-error>
+                                        <mat-error *ngIf="hasError('surname', 'maxlength')">Length is exeded</mat-error>
+                                        <mat-error *ngIf="hasError('surname', 'pattern')">Characters nor allowed</mat-error>
+                                    </mat-form-field>
+
+                                </div>
+                                <div fxFlex="20" fxFlex.md="20" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column"
+                                    style="padding: 5px;">
+                                    <mat-form-field appearance="fill" class="example-full-width">
+                                        <mat-label>Lastname</mat-label>
+                                        <input matInput formControlName="lastname">
+                                        <mat-error *ngIf="hasError('lastname', 'maxlength')">Length is exeded</mat-error>
+                                        <mat-error *ngIf="hasError('lastname', 'pattern')">Characters nor allowed</mat-error>
+                                    </mat-form-field>
+
+                                </div>
+                                <div fxFlex="10" fxFlex.md="10" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column"
+                                    style="padding: 5px;">
+                                    <mat-form-field appearance="fill" class="example-full-width">
+                                        <mat-label>DNI</mat-label>
+                                        <input matInput formControlName="dni">
+                                        <mat-error *ngIf="hasError('dni', 'required')">DNI is required</mat-error>
+                                        <mat-error *ngIf="hasError('dni', 'maxlength')">Length is exeded</mat-error>
+                                        <mat-error *ngIf="hasError('dni', 'pattern')">Characters nor allowed</mat-error>
+                                    </mat-form-field>
+
+                                </div>
+                                <div fxFlex="10" fxFlex.md="10" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column"
+                                    style="padding: 5px;">
+                                    <mat-form-field appearance="fill" class="example-full-width">
+                                        <mat-label>Sex</mat-label>
+                                        <input matInput formControlName="sex">
+                                    </mat-form-field>
+
+                                </div>
+                                <div fxFlex="15" fxFlex.md="15" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column"
+                                style="padding: 5px;">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Born Date</mat-label>
+                                    <input matInput [matDatepicker]="bd" formControlName="bornDate">
+                                    <mat-datepicker-toggle matSuffix [for]="bd"></mat-datepicker-toggle>
+                                    <mat-datepicker #bd></mat-datepicker>
+                                    <mat-error *ngIf="hasError('bornDate', 'required')">Born date is required</mat-error>
+                                  </mat-form-field>
+
+                            </div>
+
+                                <div fxFlex="100" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column"
+                                    style="padding: 5px; margin-top: 20px;">
+                                    <h3>Contact Info</h3>
+
+                                </div>
+
+                                <div fxFlex="15" fxFlex.md="15" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column"
+                                    style="padding: 5px;">
+                                    <mat-form-field appearance="fill" class="example-full-width">
+                                        <mat-label>Phone</mat-label>
+                                        <input matInput formControlName="phone">
+                                        <mat-error *ngIf="hasError('phone', 'maxlength')">Length is exeded</mat-error>
+                                        <mat-error *ngIf="hasError('phone', 'pattern')">Characters nor allowed</mat-error>
+                                    </mat-form-field>
+
+                                </div>
+                                <div fxFlex="15" fxFlex.md="15" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column"
+                                    style="padding: 5px;">
+                                    <mat-form-field appearance="fill" class="example-full-width">
+                                        <mat-label>Other Phone</mat-label>
+                                        <input matInput formControlName="phoneAlt">
+                                        <mat-error *ngIf="hasError('phoneAlt', 'maxlength')">Length is exeded</mat-error>
+                                        <mat-error *ngIf="hasError('phoneAlt', 'pattern')">Characters nor allowed</mat-error>
+                                    </mat-form-field>
+
+                                </div>
+                                <div fxFlex="40" fxFlex.md="40" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column"
+                                    style="padding: 5px;">
+                                    <mat-form-field appearance="fill" class="example-full-width">
+                                        <mat-label>Adress</mat-label>
+                                        <input matInput formControlName="adress">
+                                        <mat-error *ngIf="hasError('adress', 'maxlength')">Length is exeded</mat-error>
+                                        <mat-error *ngIf="hasError('adress', 'pattern')">Characters nor allowed</mat-error>
+                                    </mat-form-field>
+
+                                </div>
+                                <div fxFlex="15" fxFlex.md="15" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column"
+                                    style="padding: 5px;">
+                                    <mat-form-field appearance="fill" class="example-full-width">
+                                        <mat-label>City</mat-label>
+                                        <input matInput formControlName="city">
+                                        <mat-error *ngIf="hasError('city', 'maxlength')">Length is exeded</mat-error>
+                                        <mat-error *ngIf="hasError('city', 'pattern')">Characters nor allowed</mat-error>
+                                    </mat-form-field>
+
+                                </div>
+                                <div fxFlex="15" fxFlex.md="15" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column"
+                                    style="padding: 5px;">
+                                    <mat-form-field appearance="fill" class="example-full-width">
+                                        <mat-label>PC</mat-label>
+                                        <input matInput formControlName="pc">
+                                        <mat-error *ngIf="hasError('pc', 'maxlength')">Length is exeded</mat-error>
+                                        <mat-error *ngIf="hasError('pc', 'pattern')">Characters nor allowed</mat-error>
+                                    </mat-form-field>
+
+                                </div>
+
+                                <div fxFlex="100" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column"
+                                    style="padding: 5px; margin-top: 20px;">
+                                    <h3>Other Info</h3>
+
+                                </div>
+
+                                <div fxFlex="25" fxFlex.md="25" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column"
+                                    style="padding: 5px;">
+                                    <mat-form-field appearance="fill" class="example-full-width">
+                                        <mat-label>Email</mat-label>
+                                        <input matInput formControlName="email">
+                                        <mat-error *ngIf="hasError('email', 'maxlength')">Length is exeded</mat-error>
+                                        <mat-error *ngIf="hasError('email', 'pattern')">Incorrect email format</mat-error>
+                                    </mat-form-field>
+
+                                </div>
+                                <div fxFlex="100" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column"
+                                    style="padding: 5px;">
+                                    <mat-form-field appearance="fill" class="example-full-width">
+                                        <mat-label>Notes</mat-label>
+                                        <textarea matInput rows="4" formControlName="note"></textarea>
+                                        <mat-error *ngIf="hasError('note', 'maxlength')">Length is exeded</mat-error>
+                                        <mat-error *ngIf="hasError('note', 'pattern')">Characters nor allowed</mat-error>
+                                    </mat-form-field>
+
+                                </div>
+
+
+                                <div fxFlex="100" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100" fxLayout="row"
+                                    style="padding: 5px;">
+                                    <button mat-raised-button color="primary">Create</button>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </form>
+
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
