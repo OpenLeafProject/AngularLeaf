@@ -32,13 +32,17 @@ export class CorePatientDetailComponent implements OnInit {
     this.bottomSheetRef.afterDismissed().subscribe((dataFromChild) => {
       switch(dataFromChild) {
         case 'newNote':
-          this.showNewNote = true;
+          this.openNewNote();
           break;
         case 'newDate':
           // route to fullcalendar
           break;
       }
     });
+  }
+
+  openNewNote() {
+    this.showNewNote = true;
   }
 
   ngOnInit(): void {

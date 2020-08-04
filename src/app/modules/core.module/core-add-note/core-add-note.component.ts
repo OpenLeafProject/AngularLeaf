@@ -13,7 +13,6 @@ export class CoreAddNoteComponent implements OnInit {
 
   @Input() showNewNote: boolean;
   @Input() patientid: number;
-  
   @Output() close = new EventEmitter<string>();
   newNote: string;
 

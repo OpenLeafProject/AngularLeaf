@@ -7,9 +7,20 @@
                 <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                     <mat-expansion-panel-header style="zoom: 1.3">
                         <mat-panel-title>
-                            <strong>#{{patient.nhc}} {{patient.name | uppercase}}
-                                {{patient.surname | uppercase}}</strong><span fxHide.xs fxHide.sm>&nbsp;
-                            ({{patient.bornDate | age}}<span>&nbsp;years</span>)</span>
+                            <span [ngSwitch]="patient.sex">
+                                <mat-icon mat-list-icon fontSet="fa" fontIcon="fa-venus" *ngSwitchCase="1" class="mat-icon-sex"></mat-icon>
+                                <mat-icon mat-list-icon fontSet="fa" fontIcon="fa-mars" *ngSwitchCase="2" class="mat-icon-sex"></mat-icon>
+                                <mat-icon mat-list-icon fontSet="fa" fontIcon="fa-transgender-alt" *ngSwitchCase="3" class="mat-icon-sex"></mat-icon>
+                            </span>
+                            &nbsp;&nbsp;
+                            <strong>
+                                #{{patient.nhc}} {{patient.name | uppercase}}
+                                {{patient.surname | uppercase}}
+                            </strong>
+                            <span fxHide.xs fxHide.sm>
+                                &nbsp;
+                                ({{patient.bornDate | age}}<span>&nbsp;years</span>)
+                            </span>
                         </mat-panel-title>
                     </mat-expansion-panel-header>
                     <div fxFlex fxLayout="column" fxLayoutGap="10px" class="flex-content">
@@ -29,7 +40,7 @@
                                 style="padding: 5px;">
                                 <mat-form-field appearance="outline">
                                     <mat-label class="patient-detail">Born Date</mat-label>
-                                    <input matInput type="text" [ngModel]="patient.bornDate != null ? patient.bornDate.toString() : ''" disabled="true"
+                                    <input matInput type="text" [ngModel]="patient.bornDate != null ? ((patient.bornDate | date:'dd/MM/yyyy') + ' (' + (patient.bornDate | age) + ' years)') : ''" disabled="true"
                                         class="patient-detail">
                                 </mat-form-field>
                             </div>
@@ -101,9 +112,9 @@
                    
                     <mat-list>
                         <mat-list-item>
-                            <button mat-flat-button color="primary" class="action-button">
+                            <button mat-flat-button color="primary" class="action-button" (click)="openNewNote()">
                                 <mat-icon mat-list-icon fontSet="fa" fontIcon="fa-plus" class="action-button-icon"></mat-icon>
-                                New appointment
+                                New note
                             </button>
                         </mat-list-item>
                         <mat-list-item>
@@ -142,22 +153,23 @@
                 <mat-card-title>
                     <h1>Patient History</h1>
                 </mat-card-title>
-                <mat-card-content style="padding: 15px; padding-top: 10px; padding-bottom: 30px;">
-                    <div *ngFor="let note of notes" style="padding-top: 15px; padding-bottom: 20px;">
+                <mat-card-content style="padding: 15px; padding-top: 10px;">
+                    <app-core-add-note [showNewNote]="showNewNote" [patientid]="patient.nhc" (close)="onCloseNote($event)"></app-core-add-note>
+                    <div *ngFor="let note of notes" style="padding-bottom: 20px;">
                         <mat-divider></mat-divider>
-                        <h3 style="padding-top: 10px;"><b>{{note.creationDate | date:'dd/MM/yyyy HH:mm:ss' }}</b></h3>
+                        <h3 style="padding-top: 10px;"><b>{{note.owner.name + ' ' + note.owner.surname}}</b> - {{note.creationDate | date:'dd/MM/yyyy HH:mm:ss' }}</h3>
                         
-                        <p fxShow fxHide.xs fxHide.sm>{{note.content}}
-                            <button mat-mini-fab color="primary" style="float:right!important">
+                        <p fxShow fxHide.xs fxHide.sm>
+                            <span [innerHTML]="note.content"></span>
+                            <button mat-mini-fab color="primary" style="float:right!important; top: -30px;">
                                 <mat-icon mat-list-icon fontSet="fa" fontIcon="fa-edit" class="action-button-icon"></mat-icon>
                             </button>
                         </p>
-                        <p fxHide fxShow.xs fxShow.sm>{{note.content | slice:0:250 }} ...
-                            <button mat-button color="primary" style="float:right!important">Read more</button>
+                        <p fxHide fxShow.xs fxShow.sm>
+                            <span [innerHTML]="note.content | slice:0:250"></span>...
+                            <button mat-button color="primary" style="float:right!important;">Read more</button>
                         </p>
                     </div>
-
-                    <app-core-add-note [showNewNote]="showNewNote" [patientid]="patient.nhc" (close)="onCloseNote()"></app-core-add-note>
                 </mat-card-content>
             </mat-card>
         </div>

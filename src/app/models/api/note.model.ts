@@ -7,5 +7,5 @@ export class Note {
     public hash: string;
     public creationDate: Date;
     public patientid: Patient;
-    public user: User;
+    public owner: User;
 }
