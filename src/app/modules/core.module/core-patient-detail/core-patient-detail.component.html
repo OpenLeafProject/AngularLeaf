@@ -1,0 +1,172 @@
+<div fxFlex fxLayout="column" fxLayoutGap="10px" class="flex-content">
+    <div fxLayout="row wrap" style="padding-bottom: 70px;">
+        <!-- loop over the cardList and show the cards -->
+        <div fxFlex="100" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column" style="padding: 5px;">
+            <!-- cards here -->
+            <mat-accordion>
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header style="zoom: 1.3">
+                        <mat-panel-title>
+                            <strong>#{{patient.nhc}} {{patient.name | uppercase}}
+                                {{patient.surname | uppercase}}</strong><span fxHide.xs fxHide.sm>&nbsp;
+                            ({{patient.bornDate | age}}<span>&nbsp;years</span>)</span>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div fxFlex fxLayout="column" fxLayoutGap="10px" class="flex-content">
+                        <div fxLayout="row wrap">
+                            <!-- loop over the cardList and show the cards -->
+                            <div fxFlex="25" fxFlex.md="25" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column"
+                                style="padding: 5px;">
+                                <mat-form-field appearance="outline">
+                                    <mat-label class="patient-detail">Full Name</mat-label>
+                                    <input matInput type="text"
+                                        [ngModel]="(patient.name | uppercase) + ' ' + (patient.surname | uppercase)  + ' ' + (patient.lastname | uppercase)"
+                                        disabled="true" class="patient-detail">
+                                </mat-form-field>
+                            </div>
+
+                            <div fxFlex="25" fxFlex.md="25" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column"
+                                style="padding: 5px;">
+                                <mat-form-field appearance="outline">
+                                    <mat-label class="patient-detail">Born Date</mat-label>
+                                    <input matInput type="text" [ngModel]="patient.bornDate != null ? patient.bornDate.toString() : ''" disabled="true"
+                                        class="patient-detail">
+                                </mat-form-field>
+                            </div>
+
+                            <div fxFlex="25" fxFlex.md="25" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column"
+                                style="padding: 5px;">
+                                <mat-form-field appearance="outline">
+                                    <mat-label class="patient-detail">DNI</mat-label>
+                                    <input matInput type="text" [ngModel]="patient.dni != '' ? patient.dni: '--'"
+                                        disabled="true" class="patient-detail">
+                                </mat-form-field>
+                            </div>
+
+                            <div fxFlex="25" fxFlex.md="25" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column"
+                                style="padding: 5px;">
+                                <mat-form-field appearance="outline">
+                                    <mat-label class="patient-detail">Phone</mat-label>
+                                    <input matInput type="text"
+                                        [ngModel]="patient.phone + (patient.phoneAlt != null ? ' - ' + patient.phoneAlt: '')"
+                                        disabled="true" class="patient-detail">
+                                </mat-form-field>
+                            </div>
+
+                            <div fxFlex="50" fxFlex.md="50" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column"
+                                style="padding: 5px;">
+                                <mat-form-field appearance="outline">
+                                    <mat-label class="patient-detail">Email</mat-label>
+                                    <input matInput type="text" [ngModel]="patient.email != '' ? patient.email: '--'"
+                                        disabled="true" class="patient-detail">
+                                </mat-form-field>
+                            </div>
+
+                            <div fxFlex="50" fxFlex.md="50" fxFlex.sm="50" fxFlex.xs="100" fxLayout="column"
+                                style="padding: 5px;">
+                                <mat-form-field appearance="outline">
+                                    <mat-label class="patient-detail">Adress</mat-label>
+                                    <input matInput type="text"
+                                        [ngModel]="(patient.adress + patient.city + patient.pc) != '' ? (patient.adress + ' ' + patient.city + ' ' + patient.pc) : '--'"
+                                        disabled="true" class="patient-detail">
+                                </mat-form-field>
+                            </div>
+
+                            <div fxFlex="100" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column"
+                                style="padding: 5px;">
+                                <mat-form-field appearance="outline">
+                                    <mat-label class="patient-detail">Note</mat-label>
+                                    <input matInput type="text" [ngModel]="patient.note != '' ? patient.note: '--'"
+                                        disabled="true" class="patient-detail">
+                                </mat-form-field>
+                            </div>
+
+                            <div fxFlex="100" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100" fxLayout="row"
+                                style="padding: 5px;">
+                                <button mat-raised-button color="primary">Edit patient data</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+
+        <div fxFlex="25" fxFlex.md="25" fxHide fxShow.gt-sm fxLayout="column" style="padding: 5px;"> 
+            <mat-card>
+                <mat-card-title>
+                    <h1>Actions</h1>
+                </mat-card-title>
+                <mat-card-content style="padding: 25px;">
+                   
+                    <mat-list>
+                        <mat-list-item>
+                            <button mat-flat-button color="primary" class="action-button">
+                                <mat-icon mat-list-icon fontSet="fa" fontIcon="fa-plus" class="action-button-icon"></mat-icon>
+                                New appointment
+                            </button>
+                        </mat-list-item>
+                        <mat-list-item>
+                            <button mat-flat-button color="primary" class="action-button">
+                                <mat-icon mat-list-icon fontSet="fa" fontIcon="fa-calendar-alt" class="action-button-icon"></mat-icon>
+                                Schdule new date
+                            </button>
+                        </mat-list-item>
+                        <mat-list-item>
+                            <button mat-flat-button color="primary" class="action-button">
+                                <mat-icon mat-list-icon fontSet="fa" fontIcon="fa-calendar-alt" class="action-button-icon"></mat-icon>
+                                Schdule new date
+                            </button>
+                        </mat-list-item>
+                        <mat-list-item>
+                            <button mat-flat-button color="primary" class="action-button">
+                                <mat-icon mat-list-icon fontSet="fa" fontIcon="fa-calendar-alt" class="action-button-icon"></mat-icon>
+                                Schdule new date
+                            </button>
+                        </mat-list-item>
+                        <mat-list-item>
+                            <button mat-flat-button color="primary" class="action-button">
+                                <mat-icon mat-list-icon fontSet="fa" fontIcon="fa-calendar-alt" class="action-button-icon"></mat-icon>
+                                Schdule new date
+                            </button>
+                        </mat-list-item>
+                      </mat-list>
+
+                </mat-card-content>
+            </mat-card>
+
+        </div>
+
+        <div fxFlex="75" fxFlex.md="75" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column" style="padding: 5px;">
+            <mat-card>
+                <mat-card-title>
+                    <h1>Patient History</h1>
+                </mat-card-title>
+                <mat-card-content style="padding: 15px; padding-top: 10px; padding-bottom: 30px;">
+                    <div *ngFor="let note of notes" style="padding-top: 15px; padding-bottom: 20px;">
+                        <mat-divider></mat-divider>
+                        <h3 style="padding-top: 10px;"><b>{{note.creationDate | date:'dd/MM/yyyy HH:mm:ss' }}</b></h3>
+                        
+                        <p fxShow fxHide.xs fxHide.sm>{{note.content}}
+                            <button mat-mini-fab color="primary" style="float:right!important">
+                                <mat-icon mat-list-icon fontSet="fa" fontIcon="fa-edit" class="action-button-icon"></mat-icon>
+                            </button>
+                        </p>
+                        <p fxHide fxShow.xs fxShow.sm>{{note.content | slice:0:250 }} ...
+                            <button mat-button color="primary" style="float:right!important">Read more</button>
+                        </p>
+                    </div>
+
+                    <app-core-add-note [showNewNote]="showNewNote" [patientid]="patient.nhc" (close)="onCloseNote()"></app-core-add-note>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <button fxHide fxShow.xs fxShow.sm mat-fab color="primary" style="position: fixed; right: 15px; bottom: 30px;" (click)="openBottomSheet()">
+            <mat-icon mat-list-icon fontSet="fa" fontIcon="fa-plus" class="action-button-icon"></mat-icon>
+        </button>
+
+    </div>
+</div>
+
+        
