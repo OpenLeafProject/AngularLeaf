@@ -24,8 +24,7 @@ import { CoreModule } from './modules/core.module/core.module';
     ReactiveFormsModule,
     MaterialModule,
     ToastrModule.forRoot(),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    CoreModule
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

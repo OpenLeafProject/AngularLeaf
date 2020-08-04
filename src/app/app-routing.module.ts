@@ -9,7 +9,7 @@ const routes: Routes = [
   // loadChildren: '../app/module-rxcons/rxcons.module#RxconsModule',
   // canActivate: [CanActivateViaAuthGuard]
   },
-  { path: 'console',
+  { path: 'c',
   loadChildren: () => import('../app/modules/core.module/core.module').then(m => m.CoreModule),
   // loadChildren: '../app/module-rxcons/rxcons.module#RxconsModule',
   // canActivate: [CanActivateViaAuthGuard]
@@ -21,7 +21,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes /*FOR DEBUG: ,{ enableTracing: true }*/)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
