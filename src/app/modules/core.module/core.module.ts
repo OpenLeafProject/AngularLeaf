@@ -10,6 +10,7 @@ import { CanActivateViaAuthGuard } from '../../guards/CanActivateViaAuth.guard';
 
 import { MaterialModule } from '../common/material.module/material.module';
 import { PrimengModule } from '../common/primeng-module/primeng.module';
+import { FullCalendarModule } from '@fullcalendar/angular';
 import { AgePipeModule } from '../common/pipes/agepipe.module/agepipe.module';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -19,10 +20,25 @@ import { CorePatientDetailComponent } from './core-patient-detail/core-patient-d
 import { PatientCreateComponent } from './patient-create/patient-create.component';
 import { BottomSheetOverviewActions } from './core-patient-detail/core-patient-detail-navactions';
 import { CoreAddNoteComponent } from './core-add-note/core-add-note.component';
+import { CoreCalendarComponent } from './core-calendar/core-calendar.component';
+
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGrigPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction'; // for dateClick
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  timeGrigPlugin,
+  interactionPlugin
+]);
 
 const routes: Routes = [
   {
     path: 'dashboard', component: CoreDashboardComponent,
+    canActivate: [CanActivateViaAuthGuard] 
+  },
+  {
+    path: 'calendar', component: CoreCalendarComponent,
     canActivate: [CanActivateViaAuthGuard] 
   },
   {
@@ -47,7 +63,8 @@ const routes: Routes = [
     PatientCreateComponent,
     CorePatientDetailComponent,
     BottomSheetOverviewActions,
-    CoreAddNoteComponent
+    CoreAddNoteComponent,
+    CoreCalendarComponent
   ],
   imports: [
     CommonModule,
@@ -57,7 +74,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MaterialModule,
     PrimengModule,
-    AgePipeModule
+    AgePipeModule,
+    FullCalendarModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

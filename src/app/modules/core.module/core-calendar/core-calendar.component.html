@@ -1,0 +1,17 @@
+<div fxFlex fxLayout="column" fxLayoutGap="10px" class="flex-content">
+    <div fxLayout="row wrap" style="padding-bottom: 70px;">
+        <!-- loop over the cardList and show the cards -->
+        <div fxFlex="100" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column" style="padding: 5px;">
+            <mat-card>
+                <mat-card-title>
+                    <h1>calendar</h1>
+                </mat-card-title>
+                <mat-card-content style="padding: 15px; padding-top: 10px;">
+                    <div class='app-calendar'>
+                        <full-calendar [options]="calendarOptions"></full-calendar>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

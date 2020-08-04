@@ -33,6 +33,9 @@
               "node_modules/@fortawesome/fontawesome-free/css/all.css",
               "node_modules/quill/dist/quill.core.css",
               "node_modules/quill/dist/quill.snow.css",
+              "node_modules/@fullcalendar/common/main.min.css",
+              "node_modules/@fullcalendar/daygrid/main.min.css",
+              "node_modules/@fullcalendar/timegrid/main.min.css",
               "src/styles.sass"
             ],
             "scripts": [
