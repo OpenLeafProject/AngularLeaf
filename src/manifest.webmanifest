@@ -1,6 +1,6 @@
 {
-  "name": "Leaf-Front",
-  "short_name": "Leaf-Front",
+  "name": "AngularLeaf",
+  "short_name": "AngularLeaf",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
