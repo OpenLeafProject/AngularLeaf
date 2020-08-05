@@ -7,7 +7,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "prod-build": "ng build --prod",
+    "http-deploy": "npm run prod-build && cd dist/Leaf-Front && http-server -o"
   },
   "private": true,
   "dependencies": {

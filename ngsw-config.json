@@ -25,5 +25,21 @@
         ]
       }
     }
-  ]
+  ],
+  "dataGroups": [
+    {
+      "name": "patient",
+      "urls": [
+        "**/api/v0.1/patient/search/*",
+        "**/api/v0.1/patient/*/notes",
+        "**/api/v0.1/patient/*"
+      ],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxAge": "7d",
+        "maxSize": 250,
+        "timeout": "5s"
+      }
+    }
+   ]
 }
