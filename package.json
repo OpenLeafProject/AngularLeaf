@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "prod-build": "ng build --prod",
-    "http-deploy": "npm run prod-build && cd dist/Leaf-Front && http-server -o"
+    "http-deploy": "npm run prod-build && cd dist/AngularLeaf && http-server -o"
   },
   "private": true,
   "dependencies": {
@@ -31,6 +31,7 @@
     "@fullcalendar/core": "^5.2.1",
     "@fullcalendar/daygrid": "^5.2.0",
     "@fullcalendar/interaction": "^5.2.0",
+    "@fullcalendar/list": "^5.2.0",
     "@fullcalendar/timegrid": "^5.2.0",
     "moment": "^2.27.0",
     "ngx-toastr": "^13.0.0",

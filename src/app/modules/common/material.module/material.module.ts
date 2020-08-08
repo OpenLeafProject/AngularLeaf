@@ -20,6 +20,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
    imports: [
@@ -60,7 +61,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
       MatNativeDateModule,
       MatExpansionModule,
       MatRadioModule,
-      MatButtonToggleModule
+      MatButtonToggleModule,
+      MatDialogModule
    ],
    exports: [
     MatButtonModule,
@@ -82,7 +84,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     MatDatepickerModule,
     MatExpansionModule,
     MatRadioModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatDialogModule
    ],
    providers: [
      MatDatepickerModule,

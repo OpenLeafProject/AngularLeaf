@@ -21,15 +21,21 @@ import { PatientCreateComponent } from './patient-create/patient-create.componen
 import { BottomSheetOverviewActions } from './core-patient-detail/core-patient-detail-navactions';
 import { CoreAddNoteComponent } from './core-add-note/core-add-note.component';
 import { CoreCalendarComponent } from './core-calendar/core-calendar.component';
+import { CoreWorklistComponent } from './core-worklist/core-worklist.component';
+import { CoreCalendarAddEventDialog } from './core-calendar/core-calendar-add-event/core-calendar-add-event';
+
 
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGrigPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction'; // for dateClick
+import listPlugin from '@fullcalendar/list';
+
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
   timeGrigPlugin,
-  interactionPlugin
+  interactionPlugin,
+  listPlugin
 ]);
 
 const routes: Routes = [
@@ -39,6 +45,10 @@ const routes: Routes = [
   },
   {
     path: 'calendar', component: CoreCalendarComponent,
+    canActivate: [CanActivateViaAuthGuard] 
+  },
+  {
+    path: 'worklist', component: CoreWorklistComponent,
     canActivate: [CanActivateViaAuthGuard] 
   },
   {
@@ -64,7 +74,9 @@ const routes: Routes = [
     CorePatientDetailComponent,
     BottomSheetOverviewActions,
     CoreAddNoteComponent,
-    CoreCalendarComponent
+    CoreCalendarComponent,
+    CoreWorklistComponent,
+    CoreCalendarAddEventDialog
   ],
   imports: [
     CommonModule,

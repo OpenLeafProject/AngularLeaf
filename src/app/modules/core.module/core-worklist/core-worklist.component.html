@@ -1,4 +1,3 @@
-
 <div fxFlex fxLayout="column" fxLayoutGap="10px" class="flex-content">
     <div fxLayout="row wrap">
       <!-- loop over the cardList and show the cards -->
@@ -12,14 +11,7 @@
         <!-- cards here -->
         <mat-card>
           <mat-card-content>
-            <div class="form-container text-center">
-                <mat-form-field>
-                  <mat-label>Search</mat-label>
-                  <input matInput [(ngModel)]="search">
-                </mat-form-field>
-                &nbsp;
-                <button mat-raised-button color="primary" (click)="refresh()">Search</button>
-              </div>
+                <h2>Today's work</h2>
           </mat-card-content>
         </mat-card>
       </div>
@@ -36,35 +28,41 @@
       <!-- cards here -->
       <div class="example-container mat-elevation-z8" class="smhide">
 
-        <mat-table [dataSource]="splicedData" matSort>
+        <mat-table [dataSource]="splicedData" matSort style="padding-bottom: 25px;">
             <!-- ID Column -->
             <ng-container matColumnDef="nhc">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> NHC </mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{row.nhc}} </mat-cell>
+                <mat-cell *matCellDef="let row"> {{row.patient.nhc}} </mat-cell>
+            </ng-container>
+
+            <!-- ID Column -->
+            <ng-container matColumnDef="time">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Time </mat-header-cell>
+              <mat-cell *matCellDef="let row"> {{row.datetime | date:'HH:mm'}} </mat-cell>
             </ng-container>
         
             <!-- Name Column -->
             <ng-container matColumnDef="name">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+                <mat-cell *matCellDef="let row"> {{row.patient.name}} </mat-cell>
             </ng-container>
         
             <!-- Name Column -->
             <ng-container matColumnDef="surname">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Surname </mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{row.surname}} </mat-cell>
+                <mat-cell *matCellDef="let row"> {{row.patient.surname}} </mat-cell>
             </ng-container>
         
             <!-- Name Column -->
             <ng-container matColumnDef="lastname">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Lastname </mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{row.lastname}} </mat-cell>
+                <mat-cell *matCellDef="let row"> {{row.patient.lastname}} </mat-cell>
             </ng-container>
     
             <!-- Color Column -->
             <ng-container matColumnDef="age" class="smhide">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Born </mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{row.borndate | date:'dd/MM/yyyy'}} ({{row.borndate | age}}) </mat-cell>
+                <mat-cell *matCellDef="let row"> {{row.patient.borndate | date:'dd/MM/yyyy'}} ({{row.patient.borndate | age}}) </mat-cell>
             </ng-container>
 
             <!-- Color Column -->
@@ -76,16 +74,24 @@
             <!-- Color Column -->
             <ng-container matColumnDef="phone" class="smhide">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Phone </mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{row.phone}} </mat-cell>
+                <mat-cell *matCellDef="let row"> {{row.patient.phone}} </mat-cell>
             </ng-container>
     
             <!-- Color Column -->
             <ng-container matColumnDef="buttons">
                 <mat-header-cell *matHeaderCellDef mat-sort-header>  </mat-header-cell>
                 <mat-cell *matCellDef="let row"> 
-                    <button mat-raised-button color="primary" [routerLink]="['/c/patient/'+row.nhc]">Select</button>
+                    <button mat-raised-button color="primary" [routerLink]="['/c/patient/'+row.patient.nhc]">
+                      <mat-icon mat-list-icon fontSet="fa" fontIcon="fa-arrow-right" class="action-button-icon"></mat-icon>
+                    </button>
                     &nbsp;
-                    <button mat-raised-button color="primary" (click)="select(row.nhc)" class="smhide">Edit</button>
+                    <button mat-raised-button (click)="select(row.patient.nhc)" class="smhide" *ngIf="row.status == 1">
+                      <mat-icon mat-list-icon fontSet="fa" fontIcon="fa-check" class="action-button-icon"></mat-icon>
+                    </button>
+
+                    <button mat-raised-button color="warn" (click)="select(row.patient.nhc)" class="smhide" *ngIf="row.status == 0">
+                      <mat-icon *ngIf="row.status == 0" mat-list-icon fontSet="fa" fontIcon="fa-times" class="action-button-icon"></mat-icon>
+                    </button>
                     
                 </mat-cell>
             </ng-container>
@@ -94,50 +100,37 @@
           <mat-row *matRowDef="let row; columns: displayedColumns;">
           </mat-row>
         </mat-table>
-      
-        <mat-paginator (page)="pageChangeEvent($event)" [length]="pageLength" [pageSize]="pageSize" [pageSizeOptions]="[2, 10, 25, 100]"></mat-paginator>
       </div>
 
       <div class="example-container mat-elevation-z8" class="smshow">
 
-        <mat-table [dataSource]="splicedData" matSort>
+        <mat-table [dataSource]="splicedData" matSort style="padding-bottom: 25px;">
             <!-- ID Column -->
-            <ng-container matColumnDef="nhc">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> NHC </mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{row.nhc}} </mat-cell>
+            <ng-container matColumnDef="time">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Time </mat-header-cell>
+              <mat-cell *matCellDef="let row"> {{row.datetime | date:'HH:mm'}} </mat-cell>
             </ng-container>
-        
+
             <!-- Name Column -->
             <ng-container matColumnDef="name">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
-            </ng-container>
-        
-            <!-- Name Column -->
-            <ng-container matColumnDef="surname">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Surname </mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{row.surname}} </mat-cell>
-            </ng-container>
-        
-            <!-- Name Column -->
-            <ng-container matColumnDef="lastname">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Lastname </mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{row.lastname}} </mat-cell>
-            </ng-container>
-    
-            <!-- Color Column -->
-            <ng-container matColumnDef="phone" class="smhide">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Phone </mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{row.phone}} </mat-cell>
+                <mat-cell *matCellDef="let row"> {{row.patient.name}} {{row.patient.surname}}</mat-cell>
             </ng-container>
     
             <!-- Color Column -->
             <ng-container matColumnDef="buttons">
                 <mat-header-cell *matHeaderCellDef mat-sort-header>  </mat-header-cell>
                 <mat-cell *matCellDef="let row"> 
-                    <button mat-raised-button color="primary" [routerLink]="['/c/patient/'+row.nhc]">Select</button>
+                    <button mat-icon-button color="primary" [routerLink]="['/c/patient/'+row.patient.nhc]">
+                      <mat-icon mat-list-icon fontSet="fa" fontIcon="fa-arrow-right" class="action-button-icon"></mat-icon>
+                    </button>
                     &nbsp;
-                    <button mat-raised-button color="primary" (click)="select(row.nhc)" class="smhide">Edit</button>
+                    <button mat-icon-button color="primary" (click)="select(row.patient.nhc)" *ngIf="row.status == 1">
+                      <mat-icon  mat-list-icon fontSet="fa" fontIcon="fa-check" class="action-button-icon"></mat-icon>
+                    </button>
+                    <button mat-icon-button color="accent" (click)="select(row.patient.nhc)" *ngIf="row.status == 0">
+                      <mat-icon  mat-list-icon fontSet="fa" fontIcon="fa-times" class="action-button-icon"></mat-icon>
+                    </button>
                     
                 </mat-cell>
             </ng-container>
@@ -146,8 +139,6 @@
           <mat-row *matRowDef="let row; columns: displayedColumnsSmall;">
           </mat-row>
         </mat-table>
-      
-        <mat-paginator (page)="pageChangeEvent($event)" [length]="pageLength" [pageSize]="pageSize" [pageSizeOptions]="[2, 10, 25, 100]"></mat-paginator>
       </div>
 
     </div>

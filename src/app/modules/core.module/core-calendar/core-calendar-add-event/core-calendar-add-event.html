@@ -1,0 +1,149 @@
+<h2 mat-dialog-title>Add event</h2>
+<mat-dialog-content class="mat-typography">
+            
+    <form [formGroup]="createForm" >
+        <div fxFlex fxLayout="column" fxLayoutGap="10px" class="flex-content">
+            <div fxLayout="row wrap">
+        <div fxFlex="100" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column"
+        style="padding: 5px;">
+            <mat-form-field appearance="fill">
+                <mat-label>Assigned to</mat-label>
+                <mat-select formControlName="assignedTo">
+                    <mat-option [value]="user.id" *ngFor="let user of userList">{{user.username}} - {{user.name}} {{user.surname}} {{user.lastname}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="hasError('assignedTo', 'required')">Assigned is required</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="50" fxFlex.md="50" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column"
+            style="padding: 5px;">
+            <mat-form-field appearance="fill">
+                <mat-label>Start date</mat-label>
+                <input matInput [matDatepicker]="startpicker" formControlName="startDate" (dateChange)="calculateDuration($event)">
+                <mat-datepicker-toggle matSuffix [for]="startpicker"></mat-datepicker-toggle>
+                <mat-datepicker #startpicker></mat-datepicker>
+                <mat-error *ngIf="hasError('startDate', 'required')">Start date is required</mat-error>
+              </mat-form-field>
+        </div>
+
+        <div fxFlex="50" fxFlex.md="50" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column"
+            style="padding: 5px;">
+            <mat-form-field appearance="fill">
+                <mat-label>End date</mat-label>
+                <input matInput [matDatepicker]="endpicker" formControlName="endDate" (dateChange)="calculateDuration($event)">
+                <mat-datepicker-toggle matSuffix [for]="endpicker"></mat-datepicker-toggle>
+                <mat-datepicker #endpicker></mat-datepicker>
+                <mat-error *ngIf="hasError('endDate', 'required')">End date is required</mat-error>
+              </mat-form-field>
+        </div>
+
+        <div fxFlex="50" fxFlex.md="50" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column"
+            style="padding: 5px;">
+            <mat-form-field appearance="fill">
+                <mat-label>Start Time</mat-label>
+                <input matInput formControlName="startTime" (ngModelChange)="calculateDuration($event)">
+                <mat-error *ngIf="hasError('startTime', 'required')">Start time is required</mat-error>
+                <mat-error *ngIf="hasError('startTime', 'maxlength')">Length is exeded</mat-error>
+                <mat-error *ngIf="hasError('startTime', 'pattern')">Bad Format</mat-error>
+                <mat-error *ngIf="hasError('startTime', 'mixlength')">Bad Format</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="50" fxFlex.md="50" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column"
+            style="padding: 5px;">
+            <mat-form-field appearance="fill">
+                <mat-label>End Time</mat-label>
+                <input matInput formControlName="endTime" (ngModelChange)="calculateDuration($event)">
+                <mat-error *ngIf="hasError('endTime', 'required')">End time is required</mat-error>
+                <mat-error *ngIf="hasError('endTime', 'maxlength')">Length is exeded</mat-error>
+                <mat-error *ngIf="hasError('endTime', 'pattern')">Bad Format</mat-error>
+                <mat-error *ngIf="hasError('endTime', 'mixlength')">Bad Format</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="50" fxFlex.md="50" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column"
+        style="padding: 5px;">
+            <mat-form-field appearance="fill">
+                <mat-label>Visit type</mat-label>
+                <mat-select formControlName="visitType">
+                    <mat-option [value]="type.id" *ngFor="let type of visitTypeList">{{type.description}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="hasError('visitType', 'required')">Visit name is required</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="50" fxFlex.md="50" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column"
+        style="padding: 5px;">
+        <mat-form-field appearance="fill">
+            <mat-label>Visit mode</mat-label>
+            <mat-select formControlName="visitMode">
+                <mat-option [value]="mode.id" *ngFor="let mode of visitModeList">{{mode.description}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="hasError('visitMode', 'required')">Visit mode is required</mat-error>
+        </mat-form-field>
+        </div>
+
+        <div fxFlex="50" fxFlex.md="50" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column"
+            style="padding: 5px;">
+            <mat-form-field appearance="fill">
+                <mat-label>Duration</mat-label>
+                <input matInput formControlName="duration">
+                <mat-error *ngIf="hasError('duration', 'required')">Duration is required</mat-error>
+                <mat-error *ngIf="hasError('duration', 'maxlength')">Duration is exeded</mat-error>
+                <mat-error *ngIf="hasError('duration', 'pattern')">Characters nor allowed</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="50" fxFlex.md="50" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column"
+            style="padding: 5px;">
+            <mat-form-field appearance="fill">
+                <mat-label>Price</mat-label>
+                <input matInput formControlName="price">
+                <mat-error *ngIf="hasError('price', 'required')">Price is required</mat-error>
+                <mat-error *ngIf="hasError('price', 'maxlength')">Length is exeded</mat-error>
+                <mat-error *ngIf="hasError('price', 'pattern')">Characters nor allowed</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="25" fxFlex.md="25" fxFlex.sm="75" fxFlex.xs="75" fxLayout="column"
+        style="padding: 5px;">
+            <mat-form-field appearance="fill">
+                <mat-label>Patient</mat-label>
+                <input matInput formControlName="patientSearch">
+                <button mat-icon-button matSuffix (click)="searchPatients()" [attr.aria-label]="'Search'">
+                    <mat-icon>{{'search'}}</mat-icon>
+                </button>
+              </mat-form-field>
+        </div>
+
+        <div fxFlex="75" fxFlex.md="75" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column"
+        style="padding: 5px;">
+        <mat-form-field appearance="fill">
+            <mat-label>Patient</mat-label>
+            <mat-select formControlName="patient">
+                <mat-option [value]="patient.nhc" *ngFor="let patient of patientList">[{{patient.nhc}}] {{patient.name}} {{patient.surname}} {{patient.lastname}} ({{patient.borndate | age}} years)</mat-option>
+            </mat-select>
+            <mat-error *ngIf="hasError('patient', 'required')">Visit mode is required</mat-error>
+        </mat-form-field>
+        </div>
+
+        <div fxFlex="100" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100" fxLayout="column"
+        style="padding: 5px;">
+            <mat-form-field appearance="fill" class="example-full-width">
+                <mat-label>Note</mat-label>
+                <textarea matInput rows="4" formControlName="note"></textarea>
+                <mat-error *ngIf="hasError('note', 'maxlength')">Length is exeded</mat-error>
+                <mat-error *ngIf="hasError('note', 'pattern')">Characters nor allowed</mat-error>
+            </mat-form-field>
+        </div>
+
+        </div>
+        </div>
+    </form>
+
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button (click)="saveMessage()">save</button>
+</mat-dialog-actions>
